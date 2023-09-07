@@ -71,7 +71,7 @@
 
 <script>
   // Set the countdown time in seconds
-  var countdownTime = 30; // 30 seconds
+  var countdownTime = 60; // 30 seconds
 
   // Function to update the countdown timer
   function updateCountdown() {
@@ -79,6 +79,8 @@
     countdownElement.innerHTML = 'Time remaining: ' + countdownTime + ' seconds';
 
     if (countdownTime <= 0) {
+      countdownElement.innerHTML =  ' OTP Expired';
+
   window.location.href = "/login";
     } else {
       countdownTime--;
