@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express();
-const adminController = require('../controllers/admincontroller');
+const adminController = require('../controllers/adminController');
 const couponController = require('../controllers/couponController');
 const multer = require("../multer/multer");
 const auth=require ('../middleware/adminAuth')
