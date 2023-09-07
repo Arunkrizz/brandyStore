@@ -1,0 +1,243 @@
+{{>adminTop}}
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/admin-orderdetails.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="customer_details orderList">
+            <div class="orderTop">
+                <h2 class="hidden-xs"> Order Summary</h2>
+                {{!-- <div class="search-container">
+                    <form action="/action_page.php">
+                        <input type="text" placeholder="Search all orders" name="search">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div> --}}
+            </div>
+            <div class="order_tab">
+                <ul class="tabs">
+                    {{!-- <li class="tab-link current" data-tab="order_tab">Orders</li> --}}
+                 <a href="/admin/allOrders"><li class="tab-link current" data-tab="order_tab">Return to All Orders</li></a>
+                    {{!-- <li class="tab-link" data-tab="open_orders">Open Orders</li>
+                    <li class="tab-link" data-tab="cancelled_orders">Cancelled Orders</li> --}}
+                </ul>
+                {{!-- <div class="orderFilter">
+                    <label>1 order <span>placed in</span></label>
+                    <select>
+                        <option value="">Last 30 Days</option>
+                        <option value="">Past 6 Month</option>
+                        <option value="">2019</option>
+                        <option value="">2018</option>
+                    </select>
+                </div> --}}
+            </div>
+            <div id="order_tab" class="orderCardWrap tab-content1 current">
+                <div class="orderCard">
+                    <div class="orderHead">
+                        <ul class="orderLeft">
+                            <li>
+                                <p>ORDER PLACED <span>{{order.date}}</span></p>
+                            </li>
+                            <li>
+                                <p>TOTAL <span>₹{{order.totalAmount}}</span></p>
+                            </li>
+                            <li>
+                                <p>SHIP TO <span class="customerName">{{order.userId.Name}}</span>
+                                    <span class="cstmrInfo">
+                                        <strong>Customer Email</strong> {{order.userId.Email}}
+                                    </span>
+                                </p>
+
+                            </li>
+                        </ul>
+                        <div class="invoiceDetails">
+                            <p>ORDER # </p>
+                            <p id="orderId"> {{order._id}} </p>
+                            {{!-- <div class="invioceModel">
+                                <ul>
+                                    <li><a href="#">Invoice 1</a></li>
+                                    <li><a href="#">Invoice 1</a></li>
+                                    <li><a href="#">Invoice 1</a></li>
+                                </ul>
+                                <span class="modelClose"><i class="fa fa-times" aria-hidden="true"></i></span>
+                            </div> --}}
+                        </div>
+                    </div>
+
+                    <div class="itemDetails">
+
+                        <h3>Order Details :</h3>
+                        {{#each order.products}}
+                        {{!-- <p>Package was handed to a receptionist</p>
+                        <p>Signed by: Priti.</p> --}}
+                        <div class="itemInfo">
+                            <div class="itemImg">
+                                <img src="/product-images/{{this.product._id}}0.jpg"
+                                    style="width: 130px; height: 130px;" alt="">
+                            </div>
+                            <div class="itemDesc">
+                                <h4>{{this.product.Name}}</h4>
+                                <p>Price: </p>
+                                <span class="itemPrice">₹{{this.product.Price}}</span> <br>
+                                <p>Qty: </p>
+                                <span class="itemPrice">{{this.quantity}}</span>
+                                {{!-- <button class="buy_again">Buy it again</button> --}}
+                            </div>
+                        </div>
+                        {{/each}}
+
+                        
+                        <div class="btn_group">
+                              <button class="gift_btn mr-5">Current Status: {{order.status}}</button>
+                            <label for="orderStatus">Change Order Status:</label>
+                            <select id="orderStatus">
+                                 <option value="">Choose Status</option>
+                                <option value="placed">Placed</option>
+                                {{!-- <option value="pending">Pending</option> --}}
+                                <option value="shipped">Shipped</option>
+                                <option value="delivered">Delivered</option>
+                                {{#if (equal 'return requested' order.status )}}
+                                 <option value="returned">Accept return</option>
+                                 {{/if}}
+                                
+                            </select>
+                            {{#if (notEqual "returned" order.status )}}
+                            <button onclick="changeStatus()" class="buy_again mr-5">Update Status</button>
+                            {{/if}}
+                           
+
+
+
+                            {{!-- <button class="gift_btn mr-5">Current Status: {{order.status}}</button> --}}
+                            {{!-- <button class="gift_btn">Leave seller feedback</button> --}}
+                        </div>
+                         <p class="text-danger error"></p>
+                    </div>
+
+                </div>
+            </div>
+            {{!-- <div id="buy_again" class="orderCardWrap tab-content1">
+                <div class="again">
+                    <h2>Frequently repurchased in Health & Personal Care</h2>
+                    <ul>
+                        <li>
+                            <img src="images/product1.jpg" alt="">
+                            <h4>Pigeon Stainless Steel Swig Water Bottle 750ml (Set of 2)</h4>
+                            <span>$413.00</span>
+                            <button class="buy_again">Add to Cart</button>
+                        </li>
+                        <li>
+                            <img src="images/product1.jpg" alt="">
+                            <h4>Pigeon Stainless Steel Swig Water Bottle 750ml (Set of 2)</h4>
+                            <span>$413.00</span>
+                            <button class="buy_again">Add to Cart</button>
+                        </li>
+                        <li>
+                            <img src="images/product1.jpg" alt="">
+                            <h4>Pigeon Stainless Steel Swig Water Bottle 750ml (Set of 2)</h4>
+                            <span>$413.00</span>
+                            <button class="buy_again">Add to Cart</button>
+                        </li>
+                        <li>
+                            <img src="images/product1.jpg" alt="">
+                            <h4>Pigeon Stainless Steel Swig Water Bottle 750ml (Set of 2)</h4>
+                            <span>$413.00</span>
+                            <button class="buy_again">Add to Cart</button>
+                        </li>
+                    </ul>
+                </div>
+            </div> --}}
+            {{!-- <div id="open_orders" class="orderCardWrap tab-content1">
+                Lorem1
+            </div> --}}
+            {{!-- <div id="cancelled_orders" class="orderCardWrap tab-content1">
+                <div class="orderCard">
+                    <div class="orderHead">
+                        <ul class="orderLeft">
+                            <li>
+                                <p>ORDER PLACED <span>12 March 2019</span></p>
+                            </li>
+                            <li>
+                                <p>TOTAL <span>$413.00</span></p>
+                            </li>
+                            <li>
+                                <p>SHIP TO <span class="customerName">Customer Name</span>
+                                    <span class="cstmrInfo">
+                                        <strong>Customer Name</strong> Lorem Ipsum is simply dummy text
+                                    </span>
+                                </p>
+                            </li>
+                        </ul>
+                        <div class="invoiceDetails">
+                            <p>ORDER # 171-8448362-6456308</p>
+                        </div>
+                    </div>
+                    <div class="itemDetails">
+                        <h3>Delivered 16-Mar-2019</h3>
+                        <p>Package was handed to a receptionist</p>
+                        <p>Signed by: Priti.</p>
+                        <div class="itemInfo">
+                            <div class="itemImg">
+                                <img src="images/product1.jpg" alt="">
+                            </div>
+                            <div class="itemDesc">
+                                <h4>Pigeon Stainless Steel Swig Water Bottle 750ml (Set of 2)</h4>
+                                <p>Sold by: <span>E-Emporium</span></p>
+                                <span class="itemPrice">$0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
+        </div>
+    </div>
+    <script src="/javascripts/admin-orderdetails.js"></script>
+    <script>
+        function changeStatus() {
+            const selectedStatus = document.getElementById("orderStatus").value;
+
+
+
+            const orderIdElement = document.getElementById("orderId");
+            const orderIdValue = orderIdElement.textContent;
+
+            console.log('Changing status to:', selectedStatus,orderIdValue);
+            if(selectedStatus!==''){
+                $.ajax({
+                url: '/admin/updateDeliveryStatus',
+                data: {
+                    status: selectedStatus,
+                    orderId:orderIdValue
+                },
+                method:'post',
+                  success: (response) => {
+                    console.log("succeeded ajjx",(response.updated))
+                    if(response.updated){
+                        location.reload()
+                    }else{
+                        location.reload()
+                    }
+                }
+            })
+            }else{
+           document.querySelector('.text-danger.error').innerText="Select an option"
+            }
+            
+        }
+    </script>
+</body>
+
+</html>
+
+
+{{>adminBottom}}

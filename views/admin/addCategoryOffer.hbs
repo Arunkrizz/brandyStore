@@ -1,0 +1,50 @@
+{{>adminTop}}
+
+
+
+
+<section>
+
+<div class="container mt-4">
+
+<div class="row">
+
+<div class="col-md-6">
+    
+    <h2 class="text-center">Add Category Offer</h2>
+
+  
+
+<form action="/admin/addCategoryOffer"method="POST"  enctype="multipart/form-data"  >
+
+<label for="">Category</label>
+{{!-- <input type="text" name="Category" class="form-control"> --}}
+<select name="Category" class="form-control">
+  {{#each category}}
+<option value="{{this.Category}}">{{this.Category}}</option>
+  {{/each}}
+  {{!-- <option value="Necklace">Necklace</option>
+  <option value="Bangles">Bangles</option>
+  <option value="EarRings">EarRings</option> --}}
+  {{!-- <option value="EarRings">EarRings</option> --}}
+  <!-- Add more options as needed -->
+</select>
+
+ <label for="">Offer Percentage</label>
+ <input type "text" name="offer"  class="form-control" >
+
+
+
+<button type="submit" class="btn btn-success mt-4">Submit</button>
+
+</form>
+
+</div>
+</div>
+</div>
+
+
+</section>
+
+
+{{>adminBottom}}

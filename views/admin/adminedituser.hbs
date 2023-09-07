@@ -1,0 +1,75 @@
+{{>adminTop}}
+
+{{!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brands font-weight-bold" href="#"><h3>Admin Panel</h3> </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse ml-5" id="navbarSupportedContents">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/admin">All Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/allOrders">All Orders</a>
+        </li>
+      
+         <li class="nav-item">
+          <a class="nav-link" href="/admin/allUsers">All Users</a>
+        </li>
+      
+          <li class="nav-item">
+           <a class="nav-link" href="/admin/getAllCategory">All Categories</a>
+        </li>
+       
+      </ul>
+    
+    </div>
+     
+  </div>
+</nav> --}}
+
+
+
+<section>
+
+<div class="container mt-4">
+
+<div class="row">
+
+<div class="col-md-6">
+    
+    <h2 class="text-center">Edit User</h2>
+
+<form action="/admin/edit-user/{{user._id}}"method="POST"  >
+<label for="">Name</label>
+ <input type "text" name="Name" value={{user.Name}} class="form-control">
+
+<label for="">Email</label>
+<input type="text" name="Category" value={{user.Email}} class="form-control">
+
+<label for="">Mobile</label>
+<input type="text" name="Price" value={{user.Mobile}} class="form-control">
+
+{{!-- <label for="">Password</label>
+<input type="text" name="Description" value={{user.Password}} class="form-control"> --}}
+
+
+
+
+
+
+<button type="submit" class="btn btn-success mt-4">Submit</button>
+
+</form>
+
+</div>
+</div>
+</div>
+
+
+</section>
+
+
+{{>adminBottom}}

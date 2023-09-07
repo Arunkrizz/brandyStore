@@ -1,0 +1,59 @@
+#header {
+    background: url("https://zeevector.com/wp-content/uploads/Jewellery-Banner-Design-HD.png")center
+      center/cover no-repeat;
+  }
+  
+  #icon{
+    font-size:25px;
+    border-radius:50%;
+    background-color:#f4f4f4;
+    padding:15px;
+  }
+  .shop{
+    margin-top:50px;
+    margin-bottom:50px;
+    margin-left:120px;
+    font-size:50px;
+  }
+  #content{
+    color:#fff;
+    padding:35px;
+  }
+  #text{
+    text-align:center;
+    font-size:45px;
+    margin-left:45%;
+  }
+  #footer{
+    margin-top:35px;
+    margin-bottom:35px;
+    background-color:#dbdde0;
+  }
+  
+  .footer{
+    background-color:#222;
+    color:#fff;
+    font-size:14px;
+    padding-top:16px;
+    width:100%;
+  }
+  #iconn{
+    color:blue;
+    font-size:25px;
+  }
+  
+  
+  @media(max-width:600px){
+      h1{
+          font-size:25px;
+          font-weight:100;
+      }
+  }
+
+
+
+  /* ////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+
+  

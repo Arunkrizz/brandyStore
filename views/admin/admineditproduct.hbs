@@ -1,0 +1,121 @@
+{{>adminTop}}
+
+{{!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brands font-weight-bold" href="#"><h3>Admin Panel</h3> </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse ml-5" id="navbarSupportedContents">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/admin">All Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/allOrders">All Orders</a>
+        </li>
+      
+         <li class="nav-item">
+          <a class="nav-link" href="/admin/allUsers">All Users</a>
+        </li>
+      
+       <li class="nav-item">
+          <a class="nav-link" href="/admin/getAllCategory">All Categories</a>
+        </li>
+         
+       
+      </ul>
+    
+    </div>
+     
+  </div>
+</nav> --}}
+
+
+
+<section>
+
+<div class="container mt-4">
+
+<div class="row">
+
+<div class="col-md-12">
+    
+    <h2 class="text-center">Edit Product</h2>
+
+<form action="/admin/edit-product/{{product._id}}"method="POST" enctype="multipart/form-data" >
+<label for="">Name</label>
+ <input type "text" name="Name" value={{product.Name}} class="form-control">
+
+<label for="">Category</label>
+<input type="text" name="Category" value={{product.Category}} class="form-control">
+
+<label for="">Price</label>
+<input type="text" name="Price" value={{product.Price}} class="form-control">
+
+
+<label for="">Description</label>
+<input type="text" name="Description" value={{product.Description}} class="form-control">
+
+<label for="">Product Stock</label>
+<input type="text" name="Stock" value={{product.Stock}} class="form-control">
+
+
+
+<label for="">Image</Label><br>
+<div class="image-wrapper">
+<img src="/product-images/{{product._id}}0.jpg" style="width:100px;height:100px" alt="" id="imgView0"><br>
+<button type="button" class="btn btn-danger" onclick="deleteImage('imgView0')">Delete</button><br>
+</div>
+<div class="image-wrapper">
+<img src="/product-images/{{product._id}}1.jpg" style="width:100px;height:100px" alt="" id="imgView1"><br>
+<button type="button" class="btn btn-danger"onclick="deleteImage('imgView1')">Delete</button><br>
+</div>
+<div class="image-wrapper">
+<img src="/product-images/{{product._id}}2.jpg" style="width:100px;height:100px" alt="" id="imgView2"><br>
+<button type="button" class="btn btn-danger" onclick="deleteImage('imgView2')">Delete</button><br>
+</div>
+
+<input type="hidden" id="deletedImages" name="deletedImages" value="">
+{{!-- <input type="file" name="Image"  class="form-control" onchange="viewImage(event) " > --}}
+<input type="file" name="images[]"  class="form-control" onchange="viewImage(event) " multiple>
+
+
+<button type="submit" class="btn btn-success mt-4">Submit</button>
+
+</form>
+
+</div>
+</div>
+</div>
+
+
+</section>
+
+<script>
+  function viewImage(event){
+    document.getElementById('imgView').src=URL.createObjectURL(event.target.files[0])
+  }
+</script>
+
+<script>
+  function deleteImage(imgViewId) {
+            const imageElement = document.getElementById(imgViewId);
+            const deletedImagesInput = document.getElementById('deletedImages');
+
+            // Add the image's filename to the deleted images list
+            if (deletedImagesInput.value) {
+                deletedImagesInput.value += ',' + imageElement.src.split('/').pop();
+            } else {
+                deletedImagesInput.value = imageElement.src.split('/').pop();
+            }
+
+            // Remove image preview and its delete button from the page
+            const imageWrapper = imageElement.parentNode;  // Assuming this is the container of both the image and the delete button.
+            imageWrapper.parentNode.removeChild(imageWrapper);
+
+        }
+</script>
+
+
+{{>adminBottom}}

@@ -1,0 +1,234 @@
+
+<link rel="stylesheet" type="text/css" href="/stylesheets/productDetailsPage.css">
+
+<!--GOOGLE FONTS-->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo+Narrow&display=swap" rel="stylesheet"> 
+
+<!--FONT AWESOME-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<!--BANNER-->
+<div class="banner">
+<section>
+<a href="/home">HOME</a> / <a href="#">PRODUCT</a>
+</section>
+</div>
+
+<!--CONTAINER-->
+<div class="product_container">
+<div class="sidebar product_slides slide_border">
+<img src="/product-images/{{product._id}}0.jpg"  style="width: 150px; height: 150px;" class="product_slides-item slide_images slide_option slide_image_color inline-photo2 show-on-scroll2" onclick="changeSlide(event,'Slide1')">
+<img src="/product-images/{{product._id}}1.jpg"  style="width: 150px; height: 150px;" class="product_slides-item slide_images slide_option inline-photo2 show-on-scroll2" onclick="changeSlide(event,'Slide2')">
+<img src="/product-images/{{product._id}}2.jpg"  style="width: 150px; height: 150px;" class="product_slides-item slide_images slide_option inline-photo2 show-on-scroll2" onclick="changeSlide(event,'Slide3')">
+</div>
+
+
+<div id="Slide1" class="Slider_Container SLider_border Product_tumbnail animate">
+<img src="/product-images/{{product._id}}0.jpg"  style="width: 450px; height: 450px;">
+</div>
+
+<div id="Slide2" class="Slider_Container SLider_border Product_tumbnail animate" style="display:none">
+<img src="/product-images/{{product._id}}1.jpg"  style="width: 450px; height: 450px;">
+</div>
+
+<div id="Slide3" class="Slider_Container SLider_border Product_tumbnail animate" style="display:none">
+<img src="/product-images/{{product._id}}2.jpg"  style="width: 450px; height: 450px;">
+</div>
+<div class="details">
+<h1 class="title">{{product.Name}}</h1>
+<span class="price">₹{{product.Price}}</span> 
+<div class="star-ratings-css">
+<div class="star-ratings-css-top"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+<div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+</div>
+<p>{{product.Description}}</p>
+<ul class="sub-details">
+<li><i class="fa fa-shield"></i> Secured Payment</li>
+<li><i class="fa fa-truck"></i> Delivered in 2-5 working days</li>
+</ul>
+<table>
+<tr>
+{{!-- <td><label for="pincode">Check Availability</label></td> --}}
+</tr>
+<tr>
+{{!-- <td><input type="tel" name="pincode" id="pincode" placeholder="Pincode"></td><td><button class="btn1" type="submit">CHECK</button></td> --}}
+</tr>
+<tr>
+<td>  <button class="btn2" onclick="addtocart('{{product._id}}')">ADD TO CART</button></td>
+</tr>
+</table>
+
+</div>
+</div>
+
+<div class="reviews inline-photo show-on-scroll">
+<div class="review_sidebar review_bar_block review_gray review_card"><center>
+<button class="review-bar-item review-button tablink btn4 active_button" onclick="opentab_type(event, 'Description')">Description</button>
+<button class="review-bar-item review-button tablink btn4" onclick="opentab_type(event, 'Specification')">Specification</button>
+<button class="review-bar-item review-button tablink btn4" onclick="opentab_type(event, 'User_reviews')">Reviews</button>
+</center></div>
+
+<div>
+
+<div id="Description" class="review_container tab_type">
+<h2>Description</h2>
+<p>{{product.Description}}</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+</div>
+
+<div id="Specification" class="review_container tab_type" style="display:none">
+<h2>Specification</h2>
+<table class="specification_table">
+<tr>
+<td>Dimension</td>
+<td>24cm</td>
+</tr>
+<tr>
+<td>Material</td>
+<td>Stainless Steel</td>
+</tr>
+<tr>
+<td>Warrenty</td>
+<td>1 Year</td>
+</tr>
+<tr>
+<td>Waterproof</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Return</td>
+<td>No</td>
+</tr>
+</table>
+</div>
+
+<div id="User_reviews" class="review_container tab_type" style="display:none">
+<div class="user_star_ratings">
+<section class="overall_rating">
+<span class="sub-title">OVERALL RATING</span>
+<span class="title">4.0</span>
+<p>(123 Reviews)</p>
+</section>
+<section class="rating_blocks">
+<span class="sub-title">BASED ON 123 REVIEWS</span>  
+<ul>
+<li>
+5 Star
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span> 
+23
+</li>
+<li>
+4 Star
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span> 
+40
+</li>
+<li>
+3 Star
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span> 
+35
+</li>
+<li>
+2 Star
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span> 
+10
+</li>
+<li>
+1 Star
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span> 
+15
+</li>
+</ul>  
+</section>
+<section class="reviews_recorded">
+<ul>
+<li>
+<img src="https://source.unsplash.com/50x50/?person" alt="User"> <b>Albert</b>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span> 
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+</li>
+<li>
+<img src="https://source.unsplash.com/50x50/?person" alt="User"> <b>Albert</b>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span> 
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+</li>
+</ul>
+<center><button class="btn1" style="width:150px;">Load More...</button></center>
+</section>
+</div>
+<div class="enter_user_star_ratings">
+<h1 class="title">ADD YOUR REVIEW</h1>
+<div class="rating-box">
+<div class="rating-container">
+<input type="radio" name="rating" value="5" id="star-5"> <label for="star-5">&#9733;</label>
+
+<input type="radio" name="rating" value="4" id="star-4"> <label for="star-4">&#9733;</label>
+
+<input type="radio" name="rating" value="3" id="star-3"> <label for="star-3">&#9733;</label>
+
+<input type="radio" name="rating" value="2" id="star-2"> <label for="star-2">&#9733;</label>
+
+<input type="radio" name="rating" value="1" id="star-1"> <label for="star-1">&#9733;</label>
+</div>
+</div>
+<textarea placeholder="Write a review" name="userreview" required></textarea>
+<button class="btn2">SUBMIT</button>
+</div>
+</div>
+
+</div>
+</div>
+<script>
+		function addtocart(proId) {
+		  $.ajax({
+			url: '/addToCart/' + proId,
+			method: 'POST',
+	  
+			success: (response) => {
+			  if (response.status==true) {
+				 window.location.href = '/cart'
+				
+			  }else if(response.status=='outOfStock'){
+				Swal.fire({
+				  title: 'Out of Stock',
+				  text: 'Product Out Of Stock',
+				  icon: 'error',
+				  timer: 5000
+				})
+			  }
+			}
+		  })
+		}
+	</script>
+	
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/javascripts/productDetailsPage.js"></script>

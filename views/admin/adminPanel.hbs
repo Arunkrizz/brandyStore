@@ -1,0 +1,65 @@
+{{>adminTop}}
+
+
+
+<section>
+
+    {{!-- <div class="container">
+      <div class="row mt-5">
+        <a href="/admin/add-product" class="btn btn-success  ">Add Product</a>
+        <a href="/admin/logout" class="btn btn-danger ml-auto ">LOGOUT</a>
+      </div> --}}
+ <table class="table table-striped mt-5">
+  <thead>
+    <tr>
+      <th scope="col">Product ID</th>
+      <th scope="col">Title</th>
+       <th scope="col">
+        <div class="dropdown">
+          <button class="btn  dropdown-toggle" type="button" id="categoryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Category
+          </button>
+          <div class="dropdown-menu" aria-labelledby="categoryDropdown">
+            {{!-- <a class="dropdown-item" href="/admin/addCategory">+Add Category+</a> --}}
+            {{#each category}}
+             <a class="dropdown-item" href="/admin/getCategoryProduct?category={{this.Category}}">{{this.Category}}</a>
+             {{/each}}
+            {{!-- <a class="dropdown-item" href="/admin/Necklacecategory">Necklace</a>
+            <a class="dropdown-item" href="/admin/Banglescategory">Bangles</a>
+            <a class="dropdown-item" href="/admin/EarRingscategory">EarRings</a> --}}
+            {{!-- <a class="dropdown-item" href="/admin/jewellerycategory">EarRings</a> --}}
+            <!-- Add more categories as needed -->
+          </div>
+        </div>
+      </th>
+      <th scope="col">Description</th>
+      <th scope="col">Price</th>
+      <th>Image</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each products}}
+    <tr>
+      <th scope="row">{{this._id}}</th>
+      <td>{{this.Name}}</td>
+      <td>{{this.Category}}</td>
+      <td>{{this.Description}}</td>
+      <td>{{this.Price}} </td>
+      <td><img style="width:50px;height:50px" src="/product-images/{{this._id}}0.jpg" ></td>
+        <td><a href="/admin/admineditproduct?productId={{this._id}} " class="btn btn-primary btn-sm btn-block" >Edit</a>
+    <a href='/admin/admindeleteproduct?productId={{this._id}}' class="btn btn-danger btn-sm btn-block" onclick="return confirm('Confirm to delete Product {{this.name}}')" >Delete</a></td>
+  </tr>
+    </tr>
+    {{/each}}
+   
+  </tbody>
+</table>
+    </div>
+</section>
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+
+
+
+{{>adminBottom}}

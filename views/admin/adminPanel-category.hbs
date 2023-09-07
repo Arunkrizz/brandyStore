@@ -1,0 +1,62 @@
+{{>adminTop}}
+
+
+
+
+<section>
+
+    <div class="container">
+      {{!-- <div class="row mt-5"> --}}
+        {{!-- <a href="/admin/add-User" class="btn btn-success  ">Add User</a> --}}
+        <a href="/admin/addCategory" ><button class="btn btn-success  ">Add Category</button> </a>
+         <a href="/admin/addCategoryOffer" ><button class="btn btn-success  ">Add Category Offer</button> </a>
+        
+        {{!-- <a href="/admin/logout" class="btn btn-danger ml-auto ">LOGOUT</a> --}}
+      {{!-- </div> --}}
+ <table class="table table-striped mt-5">
+  <thead>
+    <tr>
+      <th scope="col">Category ID</th>
+      <th scope="col">Name</th>
+      {{!-- <th scope="col">Email</th> --}}
+      {{!-- <th scope="col">Password</th> --}}
+      {{!-- <th scope="col">admin</th> --}}
+      <th scope="col">Listed-status</th>
+      {{!-- <th>Image</th> --}}
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each category}}
+    <tr>
+      <th scope="row">{{this._id}}</th>
+      <td>{{this.Category}}</td>
+      {{!-- <td>{{this.Email}}</td> --}}
+      {{!-- <td>{{this.Password}}</td> --}}
+      {{!-- <td>{{this.Admin}} </td> --}}
+      <td>{{this.Listed}} </td>
+     
+        <td><button class="btn btn-primary btn-sm btn-block" onclick="window.location.href='/admin/editCategoryPage?categoryId={{this._id}}&&categoryName={{this.Category}}'">edit</button>
+    {{!-- <button class="btn btn-danger btn-sm btn-block" onclick="window.location.href='/admin/admindeleteuser?userId={{this._id}}'">delete</button> --}}
+    
+    {{#if this.Listed}}
+    <button class="btn btn-warning btn-sm btn-block" onclick="window.location.href='/admin/categoryUnlist?categoryId={{this._id}}&&categoryName={{this.Category}}'">Un_List</button></td>
+    {{else}}
+    <button class="btn btn-success btn-sm btn-block"  onclick="window.location.href='/admin/categoryRelist?categoryId={{this._id}}&&categoryName={{this.Category}}'">Re-List</button>
+    {{/if}}
+  </tr>
+    </tr>
+    {{/each}}
+   
+  </tbody>
+</table>
+    </div>
+</section>
+
+
+{{>adminBottom}}
+
+
+
+
+  

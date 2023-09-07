@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+        <link rel="stylesheet" href="/stylesheets/ordersPage.css">
+    </head>
+    <body>
+<header>
+  <h1>My Orders</h1>
+  <p>View all of your pending orders here.</p>
+ <a href="/home"><p><b>HOME</b></p></a>
+</header>
+{{#each orders}}
+<div class="container">
+  <div class="heading">
+    {{!-- <div class="odetails-1">
+      <p><b>Order</b></p>
+      <p>#R86F854G7665</p>
+    </div> --}}
+    <div class="odetails-2">
+      <p>Order Placed: {{this.date}}</p>
+
+    </div>
+
+    {{!-- <button> --}}
+      {{!-- <p>Return Home</p> --}}
+      <button  style="font-size: 20px; text-align: center;" >Status: {{this.status}}</button>
+      <p>payment method: {{this.paymentMethod}}</p>
+      
+          
+    {{!-- </button> --}}
+  </div>
+  <a href="/invoice?id={{this._id}}"><button class="btn btn-success">Invoice Download</button></a>
+ 
+
+  <hr>
+{{#each this.products}}
+  <div class="card-container">
+    <div class="card">
+      <div class="img">
+        <img src="/product-images/{{this.product._id}}.jpg"  alt="Nike Air Jordan 1">
+      </div>
+      <div class="parent">
+        <div class="content">
+          <div class="details-1">
+            <h1>{{this.product.Name}}</h1>
+            <p>{{this.product.Category}}</p>
+          </div>
+          <div class="details-2">
+            {{!-- <p>Size: 10</p> --}}
+            <p>Qty: {{this.quantity}}</p>
+            {{!-- <p><b>₹{{this.product.Price}}</b></p> --}}
+          </div>
+        </div>
+        <div class="status">
+          <div class="sec1">
+            <p>Price</p>
+            <h2>₹{{this.product.Price}}</h2>
+          </div>
+          <div class="sec2">
+            <p>Delivery address:</p>
+            <h3>{{../this.deliveryDetails.address1}}</h3>
+          </div>
+          {{!-- <div class="sec2">
+            <p>payment method:</p>
+            <h3>{{../this.paymentMethod}}</h3>
+          </div> --}}
+        </div>
+      </div>
+    </div>
+    <hr>
+  </div>
+  
+  {{/each}}
+{{!-- 
+  <div class="card-container">
+    <div class="card">
+      <div class="img">
+        <img src="https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/w_383,c_limit/dd682b9b-c58c-4bd2-985f-c715116d4a0b/air-max-intrlk-shoes-clCM4d.png" alt="Nike Air Jordan 1">
+      </div>
+      <div class="parent">
+        <div class="content">
+          <div class="details-1">
+            <h1>Nike Air Max INTRLK</h1>
+            <p>By NIKE</p>
+          </div>
+          <div class="details-2">
+            <p>Size: 9</p>
+            <p>Qty: 1</p>
+            <p><b>₹9,695</b></p>
+          </div>
+        </div>
+        <div class="status">
+          <div class="sec1">
+            <p>Status</p>
+            <h2>In-Transit</h2>
+          </div>
+          <div class="sec2">
+            <p>Delivery Expected By</p>
+            <h3>17 January 2022</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+  </div> --}}
+
+  <div class="card-bottom">
+    {{#if (equal this.status "placed")}} 
+    <a href="/cancelOrder?id={{this._id}}"><button  class="btn btn-danger">✖ CANCEL ORDER</button></a>
+     {{/if}}
+      {{#if (equal this.status "pending")}} 
+    <a href="/cancelOrder?id={{this._id}}"><button  class="btn btn-danger">✖ CANCEL ORDER</button></a>
+     {{/if}}
+        {{#if (equal this.status "shipped")}} 
+    <a href="/cancelOrder?id={{this._id}}"><button class="btn btn-danger">✖ CANCEL ORDER</button></a>
+     {{/if}}
+     {{#if (equal this.status "delivered")}}
+      <a href="/returnOrder?id={{this._id}}"><button class="btn btn-danger">✖ RETURN ORDER</button></a>
+       {{/if}}
+    
+    <h1>Total Amount: ₹ {{this.totalAmount}}</h1>
+  </div>
+</div>
+{{/each}}
+
+
+<div style="display: flex; justify-content: center; margin-top: 20px;">
+<nav aria-label="...">
+  <ul class="pagination">
+    <li class="page-item ">
+      <span class="page-linkc">Previous</span>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">{{page}}</a></li>
+    
+    <li class="page-item">
+      <a class="page-link" href="?page={{page}}">Next</a>
+    </li>
+  </ul>
+</nav>
+</div>
+
+<script>
+    $(document).ready(function () {
+  $(".card").click(function () {
+    $(this).toggleClass("toggle");
+  });
+});
+
+</script>
+
+
+
+
+    </body>
+</html>

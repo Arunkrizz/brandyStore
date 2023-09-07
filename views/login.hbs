@@ -1,0 +1,88 @@
+{{!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <!-- Include Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Login</h2>
+    <form action="/login" method="POST">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" class="form-control" value={{this.email}}>
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" class="form-control" required>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+  </div>
+
+  <!-- Include Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html> --}}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width-device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="sie-edge" />
+    <link href="https://unpkg.com/ionicons@4.2.2/dist/css/ionicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/signupstyle.css">
+    <title>Slider Form</title>
+</head>
+
+<body>
+ 
+    <div class="container" id="container">
+        {{!-- <div class="form-container sign-up-container">
+            <form action="/verify" method="post">
+                <h1>Create Account</h1>
+            
+                <input type="text" name="mobileNumber" placeholder="Mobile">
+                
+                <button>Verify</button>
+            </form>
+        </div> --}}
+        <div class="form-container sign-in-container">
+            <form action="/login" method="POST">
+                <h1>Log In</h1>
+             
+                <input type="email" name="email" placeholder="Email">
+                <input type="password" name="password" placeholder="Password">
+                <button>Log In</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    {{!-- <h1>Welcome Back</h1> --}}
+                    <p>To keep connected with us please login </p>
+                    {{!-- <button class="ghost" id="signIn">Log In</button> --}}
+                </div>
+                {{!-- <div class="overlay-panel overlay-right">
+                    <h1>Get Started </h1>
+                    <p>Please Enter your Mobile number</p>
+                    <button class="ghost" id="signUp">Sign Up</button>
+                </div> --}}
+            </div>
+        </div>
+    </div>
+    <script src="/javascripts/signup.js"></script>
+    <script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+</body>
+
+</html>

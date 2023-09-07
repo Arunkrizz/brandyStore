@@ -1,0 +1,74 @@
+{{>adminTop}}
+
+
+
+
+<section>
+
+    <div class="container">
+        {{!-- <div class="row mt-5"> --}}
+            {{!-- <a href="/admin/add-User" class="btn btn-success  ">Add User</a> --}}
+
+            {{!-- <a href="/admin/logout" class="btn btn-danger ml-auto ">LOGOUT</a> --}}
+        {{!-- </div> --}}
+        <table class="table table-striped mt-5">
+            <thead>
+                <tr>
+                    <th scope="col">Cart ID</th>
+                    <th scope="col" style="text-align: center;">Date</th>
+                    <th scope="col" style="text-align: center;">Customer</th>
+                    {{!-- <th scope="col">Password</th> --}}
+                    {{!-- <th scope="col">admin</th> --}}
+                    <th scope="col" style="text-align: center;">Payment-status</th>
+                    {{!-- <th>Image</th> --}}
+                    <th style="text-align: center;">Fullfillment-status</th>
+                    <th style="text-align: center;">Total</th>
+                    <th style="text-align: center;">Order details</th>
+
+
+                </tr>
+            </thead>
+           
+            <tbody>
+                {{#each orders}}
+                <tr>
+                    <th scope="row">{{this._id}}</th>
+                    <td style="text-align: center;">{{this.date}}</td>
+                    <td style="text-align: center;">{{this.userName}}</td>
+                    {{!-- <td>{{this.Password}}</td> --}}
+                    {{!-- <td>{{this.Admin}} </td> --}}
+                    <td style="text-align: center;">{{this.paymentMethod}} </td>
+                    {{!-- <td style="text-align: center;">{{this.status}} </td> --}}
+            
+                    <td style="text-align: center;">{{this.status}} </td>
+                    <td style="text-align: center;">{{this.totalAmount}} </td>
+
+                     <td><button class="btn btn-primary btn-sm btn-block"
+                            onclick="window.location.href='/admin/adminViewOrderDetails?OrderId={{this._id}}'">Order details</button> 
+                      
+                    </td>
+                   
+                    
+                  
+                </tr>
+                {{!-- </tr> --}}
+                {{/each}}
+
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<script>
+function updateHref() {
+ const selectElement = document.getElementById("statusDropdown");
+  const selectedValue = selectElement.value;
+  
+  const baseHref = "/admin/updateDeliveryStatus?status="; 
+
+  const href = baseHref + selectedValue
+  window.location.href = href;
+}
+</script>
+
+{{>adminBottom}}

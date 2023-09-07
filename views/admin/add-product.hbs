@@ -1,0 +1,93 @@
+{{>adminTop}}
+{{!-- 
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brands font-weight-bold" href="#"><h3>Admin Panel</h3> </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse ml-5" id="navbarSupportedContents">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/admin">All Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">All Orders</a>
+        </li>
+      
+         <li class="nav-item">
+          <a class="nav-link" href="/admin/allUsers">All Users</a>
+        </li>
+      
+          <li class="nav-item">
+          <a class="nav-link" href="/admin/getAllCategory">All Categories</a>
+        </li>
+       
+      </ul>
+    
+    </div>
+      <div class="d-flex justify-content-end">
+      <form class="d-flex ml-5 " role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+      </div>
+  </div>
+</nav> --}}
+
+
+<section>
+
+<div class="container mt-4">
+
+<div class="row">
+
+<div class="col-md-6 col-lg-12">
+    
+    <h2 class="text-center">Add Product</h2>
+
+<form action="/admin/add-product"method="POST" enctype="multipart/form-data" >
+<label for="">Name</label>
+ <input type "text" name="Name" class="form-control">
+
+<label for="">Category</label>
+{{!-- <input type="text" name="Category" class="form-control"> --}}
+<select name="Category" class="form-control">
+  {{#each category}}
+<option value="{{this.Category}},{{this.id}}">{{this.Category}}</option>
+  {{/each}}
+  {{!-- <option value="Necklace">Necklace</option>
+  <option value="Bangles">Bangles</option>
+  <option value="EarRings">EarRings</option> --}}
+  {{!-- <option value="EarRings">EarRings</option> --}}
+  <!-- Add more options as needed -->
+</select>
+
+<label for="">Price</label>
+<input type="text" name="Price" class="form-control">
+
+<label for="">Description</label>
+<input type="text" name="Description" class="form-control">
+
+
+
+{{!-- <label for="">Images</Label>
+<input type="file" name="Images[]" class="form-control" > --}}
+
+ <label for="images">Images</label>
+  <input type="file" name="images[]" id="images" class="form-control" multiple>
+
+
+
+<button type="submit" class="btn btn-success mt-4">Submit</button>
+
+</form>
+
+</div>
+</div>
+</div>
+
+
+</section>
+
+{{>adminBottom}}
